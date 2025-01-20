@@ -5,6 +5,7 @@ const URL = require("../model/userSchema");
 
 router.get('/', async (req, res) => {
     const allurls = await URL.find({});
+    console.log('All URLs: ', allurls);
     return res.render('homePage', {
         urls : allurls,
     });

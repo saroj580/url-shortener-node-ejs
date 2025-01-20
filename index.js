@@ -21,7 +21,11 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
 //middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
+app.use((req, res, next) => {
+    res.locals.PORT = PORT;
+    next();
+});
 
 // Routes 
 app.use("/url", urlRoute);
