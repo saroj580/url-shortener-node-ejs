@@ -1,8 +1,10 @@
 const express = require("express");
 const path = require("path");
 const { connectMongoDb } = require("./connection");
+//Routes
 const URL = require("./model/userSchema"); 
 const staticRoute = require("./routes/staticRouter");
+const userRoute = require('./routes/userHandle');
 
 const app = express();
 const PORT = 8000;
@@ -29,7 +31,7 @@ app.use((req, res, next) => {
 
 // Routes 
 app.use("/url", urlRoute);
-
+app.use('/user', userRoute);
 app.use("/", staticRoute);
 
 app.listen(PORT, () =>{
