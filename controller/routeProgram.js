@@ -9,10 +9,11 @@ async function handleGenerateShortUrl(req, res) {
     }
     // if (!body.url) return res.status(400).json({ err: "url are required" });
     const shortId = shortid.generate();  // Using generate() function
-        const newUrl = await URL.create({
-            shortId: shortId,
-            redirectURL: body.redirectURL,  // Use `redirectURL` from body
-            visitHistory: [],
+    const newUrl = await URL.create({
+        shortId: shortId,
+        redirectURL: body.redirectURL,  // Use `redirectURL` from body
+        visitHistory: [],
+        createdBy: req.user._id,
         });
     console.log("New URL created:", newUrl); 
     return res.render("homePage", {

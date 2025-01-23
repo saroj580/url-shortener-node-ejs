@@ -14,7 +14,9 @@ const userAuth = new mongoose.Schema({
         type: String,
         required: true,
     },
-}, { timestamps: true });
+    visitHistory: [{ timestamps: { type: Number } }],
+}, { timestamps: true }, 
+);
 
 const User = mongoose.model("user", userAuth);
 
